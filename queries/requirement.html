@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+
+<h3>Requirement</h3>
+
+<pre>
+SELECT name, r.minimum, (g.positive_ratings - g.negative_ratings) AS net_ratings, g.price
+FROM game AS g
+	JOIN requirements AS r ON g.appid = r.steam_appid
+WHERE g.english = 1
+	AND g.genres = 'Action'
+	AND g.platforms LIKE '%windows%'
+ORDER BY g.price ASC, net_ratings DESC
+LIMIT 500;
+</pre>
+
+<h3>Table</h3>
+
+<pre>
+Show the name, minimum requirement, net rating, and price for the action games in English on Windows.
+</pre>
+
+<table border="1" cellpadding="3">
+    <tr>
+        <th>Name</th>
+        <th>Minimum Requirement</th>
+        <th>Net Rating</th>
+        <th>Price</th>
+    </tr>
+    <tr>
+        <th>Alien Swarm</th>
+        <th>OS: Windows® 7 / Vista / Vista64 / XP Processor: Pentium 4 3.0GHz Memory: 1 GB for XP / 2GB for Vista Graphics: DirectX 9 compatible video card with 128 MB, Shader model 2.0. ATI X800, NVidia 6600 or better Hard Drive: At least 2.5 GB of free space Sound: DirectX 9.0c compatible sound card</th>
+        <th>16494</th>
+        <th>0</th>
+    </tr>
+    <tr>
+        <th>Sonic Generations Collection</th>
+        <th>OS: Microsoft Windows 7/Vista/XP Processor: Intel Pentium Dual-Core T4200 (2x2.0GHz) or AMD equivalent Memory: 2GB RAM (XP)/3GB RAM (Windows 7 / Vista) Graphics: NVIDIA GeForce 8800 (512MB) / ATI Radeon HD 2900 (512MB) DirectX®:  Hard Drive: 11 GB free hard drive space Sound:</th>
+        <th>6332</th>
+        <th>0</th>
+    </tr>
+    <tr>
+        <th>Half-Life 2: Lost Coast</th>
+        <th>Pentium 4 2.4GHz or AMD 2800+ Processor, 1GB RAM, DirectX 9 level graphics card, Windows XP, Mouse, Keyboard, Internet Connection</th>
+        <th>4763</th>
+        <th>0</th>
+    </tr>
+    <tr>
+        <th>Half-Life: Source</th>
+        <th>1.2 GHz Processor, 256MB RAM, DirectX 7 level graphics card, Windows XP, Mouse, Keyboard, Internet Connection Recommended: 2.4 GHz Processor, 512MB RAM, DirectX 9 level graphics card, Windows XP, Mouse, Keyboard, Internet Connection</th>
+        <th>2714</th>
+        <th>0</th>
+    </tr>
+    <tr>
+        <th>DOOM 3</th>
+        <th>OS: Microsoft&reg; Windows&reg; 2000/XP (Does not support Windows Vista/7)Processor: Pentium&reg;IV 1.5 GHz or Athlon&reg; XP 1500+ processor or higherMemory: 384 MB RAMGraphics: 100% DirectX&reg; 9.0b compatible 64MB Hardware Accelerated video card and the lateset driversDirectX&reg;: DirectX&reg; 9.0b (included)Hard Drive: 2.2GB of uncompressed free hard disk space (plus 400MB for Windows&reg; swap file)Sound: 100% DirectX&reg; 9.0b compatible 16-bit sound card and the latest driversMultiplayer Requirements: Internet (TCP/IP) and LAN (TCP/IP) play supported, Internet play requires broadband connection and latest drivers, LAN play requires network interface card and latest driversSupported Chipsets: ATI&reg; RadeonTM 8500, ATI&reg; RadeonTM 9000, ATI&reg; RadeonTM 9200, ATI&reg; RadeonTM 9500, ATI&reg; RadeonTM 9600, ATI&reg; RadeonTM 9700, ATI&reg; RadeonTM 9800, all nVidia&reg; GeForceTM 3/Ti series, all nVidia&reg; GeForceTM 4MX series, all nVidia&reg; GeForceTM 4/Ti series, all nVidia&reg; GeForceTM FX series, nVidia&reg; GeForceTM 6800*Important Note: Some 3D accelerator cards with the chipset listed here may not be compatible with the 3D accelerator features utilized by Doom 3. Please refer to your hardware manufacturer for 100% DirectX 9.0b compatibility. This product does not support Microsoft&reg; Windows&reg; 95/98/ME or NT.</th>
+        <th>2257</th>
+        <th>0</th>
+    </tr>
+    <tr>
+        <th>Battleborn</th>
+        <th>OS: Windows® 7 x64-bit or Later Processor: Intel i5-750 / AMD Phenom IIx4 945 Memory: 6 GB RAM Graphics: AMD HD 6870/ NVIDIA GeForce GTX 460 or better, PhysX support DirectX: Version 11 Network: Broadband Internet connection Storage: 30 GB available space Sound Card: DirectX 11 Compliant Additional Notes: Initial installation requires an internet connection for Steam authentication, and gameplay; software installations require (included with the game) include Steam Client, DirectX 11, NVidia PhysX, .Net Framework 4.5, Visual C++ Redistributable 2010, and Visual C++ Redistributable 2012.</th>
+        <th>2198</th>
+        <th>0</th>
+    </tr>
+    <tr>
+        <th>DEAD OR ALIVE 5 Last Round: Core Fighters</th>
+        <th>OS: Windows Vista/7/8/8.1 (32bit/64bit) Processor: Core i7 870 over Memory: 2 GB RAM Graphics: 1280×720 pixel over DirectX: Version 9.0c Network: Broadband Internet connection Storage: 10 GB available space Sound Card: DirectX 9.0c over Additional Notes:</th>
+        <th>1949</th>
+        <th>0</th>
+    </tr>
+    <tr>
+        <th>Half-Life Deathmatch: Source</th>
+        <th>OS: Windows® 7 (32/64-bit)/Vista/XP Processor: 1.7 GHz Processor, requires support for SSE Memory: 1024 MB RAM DirectX: Version 8.1 Network: Broadband Internet connection Storage: 4 GB available space</th>
+        <th>889</th>
+        <th>0</th>
+    </tr>
+    <tr>
+        <th>America's Army 3</th>
+        <th>Supported OS: Microsoft® Windows® XP SP2/Vista                      Processor: 3.0 GHz Single Core                      Memory: 1 GB RAM                     Graphics: Direct X 9.0c compliant, Shader 3.0 enabled video card with 256MB RAM (NVIDIA 6600 or better/ATI X1300 or better)                      DirectX Version: DirectX 9.0c                      Sound: Direct X 9.0c compliant sound card                      Hard Drive: 5 GB of Available Hard Disk Space Input: Keyboard and mouse Multiplayer: Broadband Internet connection</th>
+        <th>792</th>
+        <th>0</th>
+    </tr>
+    <tr>
+        <th>Trials on Tatooine</th>
+        <th>OS: Windows 7 SP1 or newer (64-bit OS required) Processor: Intel i5-4590 or equivalent Memory: 8 GB RAM Graphics: NVIDIA GTX 970 DirectX: Version 11 Storage: 5 GB available space Sound Card: Stereo or 5.1 Surround</th>
+        <th>722</th>
+        <th>0</th>
+    </tr>
+</table>
+
+<h3>Chart</h3>
+
+<div id="piechart" style="width: 500px; height: 300px;"></div>
+
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ["Supported OS", "Number of games"],
+      ["Windows 2000/XP", 7],
+      ["Windows 7/8/8.1", 7],
+      ["Windows Vista", 5]
+    ]);
+
+    var options = {
+      chartArea: {width:'90%', height:'90%'},
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+  }
+</script>
+
+</body>
+</html>

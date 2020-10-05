@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+
+<h3>Query</h3>
+
+<pre>
+SELECT name, average_playtime, net_ratings
+FROM bestvaluegames
+	WHERE net_ratings > 10000
+ORDER BY average_playtime, net_ratings DESC
+LIMIT 10;
+</pre>
+
+<h3>Table</h3>
+
+<table border="1" cellpadding="3">
+    <tr>
+        <th>Name</th>
+        <th>Average Playtime</th>
+        <th>Net Ratings</th>
+    </tr>
+    <tr>
+        <td>ABZU</td>
+        <td>116</td>
+        <td>14401</td>
+    </tr>
+    <tr>
+        <td>LIMBO</td>
+        <td>117</td>
+        <td>28327</td>
+    </tr>
+    <tr>
+        <td>The Beginner's Guide</td>
+        <td>120</td>
+        <td>10755</td>
+    </tr>
+    <tr>
+        <td>Brothers - A Tale of Two Sons</td>
+        <td>128</td>
+        <td>29981</td>
+    </tr>
+    <tr>
+        <td>What Remains of Edith Finch</td>
+        <td>130</td>
+        <td>10067</td>
+    </tr>
+    <tr>
+        <td>Super Hexagon</td>
+        <td>140</td>
+        <td>19181</td>
+    </tr>
+    <tr>
+        <td>One Finger Death Punch</td>
+        <td>149</td>
+        <td>13925</td>
+    </tr>
+    <tr>
+        <td>Refunct</td>
+        <td>149</td>
+        <td>11347</td>
+    </tr>
+    <tr>
+        <td>The Stanley Parable</td>
+        <td>170</td>
+        <td>28692</td>
+    </tr>
+    <tr>
+        <td>Amnesia: The Dark Descent</td>
+        <td>173</td>
+        <td>19023</td>
+    </tr>
+</table>
+
+<h3>Chart</h3>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['bar']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Game', 'Average Playtime', 'Net Ratings'],
+      ['ABZU', 116, 14401 / 100],
+      ['LIMBO', 117, 28327 / 100],
+      ['The \nBeginner\'s \nGuide', 120, 10755 / 100],
+      ['Brothers - \nA Tale of \nTwo Sons', 128, 29981 / 100],
+      ['What \nRemains of\nEdith Finch', 130, 10067 / 100],
+      ['Super\nHexagon', 140, 19181 / 100],
+      ['One Finger\nDeath Punch', 149, 13925 / 100],
+      ['Refunct', 149, 11347 / 100],
+      ['Stanley\nParable', 170, 28692 / 100],
+      ['Amnesia: TDD', 173, 19023 / 100]
+
+    ]);
+
+    var options = {
+      chart: {
+        title: 'Average Playtime vs. Net Ratings',
+      }
+    };
+
+    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+  }
+</script>
+
+<div id="columnchart_material" style="width: 900px; height: 300px;"></div>
+
+
+</body>
+</html>

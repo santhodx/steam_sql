@@ -1,0 +1,11 @@
+-- CREATE INDEX ON enroll (div_num, sch_num);
+CREATE INDEX ON game (name, price);
+CREATE INDEX ON support (website);
+CREATE INDEX ON stats (positive_ratings, negative_ratings);
+CREATE INDEX ON requirements (minimum);
+CREATE INDEX ON platforms (platform);
+CREATE INDEX ON descriprion (short_description);
+CREATE INDEX ON media (header_image);
+CREATE INDEX ON categoty (category);
+CREATE INDEX ON steamspyTags (tag_id);
+CREATE INDEX ON tags (steamspy_tags);

@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+
+<h3>Query</h3>
+
+<pre>
+SELECT developer, avgprice, medprice, maxprice
+FROM highestPriceDeveloper
+WHERE avgprice > 0
+  AND medprice > 0
+ORDER BY medprice DESC, avgprice DESC
+LIMIT 10;
+</pre>
+
+<h3>Developers with the Highest Median Game Pricing</h3>
+
+<table border="1" cellpadding="3">
+    <tr>
+        <th>Developer</th>
+		<th>Median Price (USD)</th>
+        <th>Average Price (USD)</th>
+		<th>Highest Price (USD)</th>
+    </tr>
+    <tr>
+        <td>YoYo Games Ltd.</td>
+		<td>$114.99</td>
+        <td>$162.49</td>
+		<td>$303.99</td>
+    </tr>
+    <tr>
+        <td>2by3 Games</td>
+        <td>$60.99 </td>
+		<td>$60.99</td>
+		<td>$60.99</td>
+    </tr>
+    <tr>
+        <td>Codemasters;Feral Interactive (Mac);Feral Interactive (Linux)</td>
+		<td>$44.99</td>
+        <td>$44.99</td>
+		<td>$44.99</td>
+    </tr>
+    <tr>
+        <td>Cypress Inheritance, LLC</td>
+        <td>$44.99</td>
+		<td>$44.99</td>
+		<td>$44.99</td>
+    </tr>
+    <tr>
+        <td>Sledgehammer Games;Raven Software</td>
+        <td>$39.99</td>
+		<td>$42.29</td>
+		<td>$44.99</td>
+    </tr>
+    <tr>
+        <td>Visual Concepts</td>
+        <td>$39.99</td>
+		<td>$39.99</td>
+		<td>$39.99</td>
+    </tr>
+    <tr>
+        <td>Visual Concepts;Yuke's Co., LTD</td>
+        <td>$39.99</td>
+		<td>$38.74</td>
+		<td>$39.99</td>
+    </tr>
+    <tr>
+        <td>Infinity Ward</td>
+        <td>$39.99</td>
+		<td>$31.66</td>
+		<td>$39.99</td>
+    </tr>
+    <tr>
+        <td>Wicked Witch Software</td>
+        <td>$39.95</td>
+		<td>$39.97</td>
+		<td>$39.99</td>
+    </tr>
+    <tr>
+        <td>DIMPS</td>
+        <td>$34.99</td>
+		<td>$35.66</td>
+		<td>$39.99</td>
+    </tr>
+</table>
+
+<h3>Chart</h3>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart1);
+	google.charts.setOnLoadCallback(drawChart2);
+    function drawChart1() {
+      var data = google.visualization.arrayToDataTable([
+        ["Developer", "Price in USD", { role: "style" } ],
+        ["YoYo Games Ltd.", 114.99, "#b87333"],
+        ["2by3 Games", 60.99, "silver"],
+        ["Codemasters; Feral Interactive(Mac); Feral Interactive(Linux)", 44.99, "gold"],
+        ["Cypress Inheritance, LLC", 44.99, "color: #e5e4e2"],
+		["Sledgehammer Games;Raven Software", 39.99, "#359ad2"],
+		["Visual Concepts", 39.99, "#fd9317"],
+		["Visual Concepts;Yuke's Co., LTD", 39.99, "	#2d2d2d"],
+		["Infinity Ward", 39.99, "#e5fefb"],
+		["Wicked Witch Software",  39.95, "#d44c75"],
+		["DIMPS", 34.99, "#82ae8b"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Developers Median Game Price ",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values1"));
+      chart.draw(view, options);
+  }
+      function drawChart2() {
+      var data = google.visualization.arrayToDataTable([
+        ["Developer", "Price in USD", { role: "style" } ],
+        ["YoYo Games Ltd.", 162.49, "#b87333"],
+        ["2by3 Games", 60.99, "silver"],
+        ["Codemasters; Feral Interactive(Mac); Feral Interactive(Linux)", 44.99, "gold"],
+        ["Cypress Inheritance, LLC", 44.99, "color: #e5e4e2"],
+		["Sledgehammer Games;Raven Software", 42.29, "#359ad2"],
+		["Visual Concepts", 39.99, "#fd9317"],
+		["Wicked Witch Software",  39.97, "#d44c75"],
+		["Visual Concepts;Yuke's Co., LTD", 38.74, "#2d2d2d"],
+		["DIMPS", 35.66, "#82ae8b"],
+		["Infinity Ward", 31.66, "#e5fefb"],
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Developers Average Game Price ",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values2"));
+      chart.draw(view, options);
+  }
+  </script>
+  <table class="columns">
+     <tr>
+	   <td><div id="columnchart_values1" style="width: 600px; height: 400px;"></div></td>
+	   <td><div id="columnchart_values2" style="width: 500px; height: 400px;"></div></td>
+     </tr>
+  </table>
+</body>
+</html>

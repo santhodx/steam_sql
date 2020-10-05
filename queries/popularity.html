@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+
+<h3>Popularity</h3>
+
+<pre>
+    SELECT developer, s, count
+    FROM popularity
+    ORDER BY s DESC
+    LIMIT 10;
+</pre>
+
+<h3>Table</h3>
+
+<table border="1" cellpadding="3">
+    <tr>
+        <th>developer</th>
+        <th>ratings</th>
+        <th>number of games</th>
+        
+    </tr>
+    <tr>
+        <td>Valve</td>
+        <td>2032793</td>
+        <td>26</td>
+    </tr>
+    <tr>
+        <td>Facepunch Studios</td>
+        <td>514117</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>Bethesda Game Studios</td>
+        <td>384164</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>Ubisoft Montreal</td>
+        <td>282451</td>
+        <td>19</td>
+    </tr>
+    <tr>
+        <td>CD PROJEKT RED</td>
+        <td>254311</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>Digital Extremes</td>
+        <td>217272</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>SCS Software</td>
+        <td>198425</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>Rockstar North</td>
+        <td>190472</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>Bohemia Interactive</td>
+        <td>154471</td>
+        <td>16</td>
+    </tr>
+    <tr>
+        <td>Firaxis Games;Aspyr (Mac);Aspyr (Linux)</td>
+        <td>145598</td>
+        <td>3</td>
+    </tr>
+</table>
+
+<h3>Chart</h3>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ["Element", "ratings", { role: "style" } ],
+      ["Valve", 2032793, "#FF0000"],
+      ["Facepunch Studios", 514117, "#000080"],
+      ["Bethesda Game Studios", 384164, "#800080"],
+      ["Ubisoft Montreal", 282451, "#0000FF"],
+      ["CD PROJEKT RED", 254311, "#FF00FF"],
+      ["Digital Extremes", 217272, "#008080"],
+      ["SCS Software", 198425, "#00FFFF"],
+      ["Rockstar North", 190472, "#008000"],
+      ["Bohemia Interactive", 154471, "#00FF00"],
+      ["Firaxis Games;Aspyr (Mac);Aspyr (Linux)", 145598, "#808000"],
+    ]);
+
+    var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "popularity of game developer",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);  }
+  </script>
+  <table class="columns">
+     <tr>
+           <td><div id="columnchart_values" style="width: 600px; height: 400px;"></div></td>
+     </tr>
+  </table>
+</body>
+</html>
+

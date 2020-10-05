@@ -1,0 +1,75 @@
+Table game {
+  appid int [pk]
+  name varchar
+  release_date timestamp
+  english int
+  developer varchar
+  publisher varchar
+  platforms_id int [ref: < platform.platform_id]
+  required_age int
+  categories int [ref: < category.category_id]
+  genres varchar
+  steamspy_tags_id int [ref: < steamspyTags.steamspy_tags_id]
+  achievements int
+  owners varchar
+  price double
+}
+
+Table stats{
+  steam_appid int [ref: - game.appid]
+  positive_ratings int
+  negative_ratings int
+  average_playtime int
+  median_playtime int
+ 
+}
+
+
+Table description {
+  steam_appid int [ref: - game.appid]
+  detailed_description varchar
+  about_the_game varchar
+  short_description varchar
+}
+
+Table media {
+  steam_appid int [ref: - game.appid]
+  header_image varchar
+ }
+
+Table requirements {
+  steam_appid int [ref: - game.appid]
+  pc_requirements varchar
+  mac_requirements varchar
+  linux_requirements varchar
+  minimum varchar
+  recommended varchar
+}
+
+Table support {
+  steam_appid int [ref: - game.appid]
+  website varchar //[not null, unique]
+  support_url varchar
+  support_email varchar
+}
+
+Table platform {
+  platform_id int [pk]
+  platform varchar
+ 
+}
+
+Table category{
+  category_id int [pk]
+  category varchar
+}
+
+Table steamspyTags{
+  steamspy_tags_id int [pk]
+  tag_id int [ref: > tags.tag_id]
+}
+
+Table tags{
+  tag_id int [pk]
+  steamspy_tags varchar
+}

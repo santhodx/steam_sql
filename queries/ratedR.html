@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+
+<h3>ratedR</h3>
+
+<pre>
+  SELECT name, positive_ratings, price
+      FROM ratedR
+      WHERE required_age >= 18
+      ORDER BY positive_ratings DESC
+      LIMIT 10;
+</pre>
+
+<h3>Table</h3>
+
+<table border="1" cellpadding="3">
+    <tr>
+        <th>name</th>
+        <th>positive_ratings</th>
+        <th>price</th>
+    </tr>
+    <tr>
+        <td>Grand Theft Auto V</td>
+        <td>329061</td>
+        <td>24.99</td>
+    </tr>
+    <tr>
+        <td>PAYDAY 2</td>
+        <td>308657</td>
+        <td>7.49</td>
+    </tr>
+    <tr>
+        <td>Rust</td>
+        <td>220370</td>
+        <td>27.79</td>
+    </tr>
+    <tr>
+        <td>Borderlands 2</td>
+        <td>144595</td>
+        <td>19.99</td>
+    </tr>
+    <tr>
+        <td>DayZ</td>
+        <td>118435</td>
+        <td>33.99</td>
+    </tr>
+    <tr>
+        <td>The Forest</td>
+        <td>110460</td>
+        <td>15.49</td>
+    </tr>
+    <tr>
+        <td>Fallout 4</td>
+        <td>110376</td>
+        <td>19.99</td>
+    </tr>
+    <tr>
+        <td>Tomb Raider</td>
+        <td>93509</td>
+        <td>14.99</td>
+    </tr>
+    <tr>
+        <td>BioShock Infinite</td>
+        <td>79442</td>
+        <td>19.99</td>
+    </tr>
+    <tr>
+        <td>Dying Light</td>
+        <td>78192</td>
+        <td>24.99</td>
+    </tr>
+</table>
+
+<h3>Chart (name Vs price)</h3>
+<class id="barchart_values" style="width: 900px; height: 300px;"></class>
+<h3>Chart (name Vs positive_ratings)</h3>
+<class id="barchart_values2" style="width: 900px; height: 300px;"></class>
+
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["name", "price", { role: "style" } ],
+        ["Grand Theft Auto V", 24.99, "#b87333"],
+        ["PAYDAY 2", 7.49, "silver"],
+        ["Rust", 27.79, "gold"],
+        ["Borderlands 2", 19.99, "color: #e5e4e2"],
+        ["DayZ", 33.99, "green"],
+        ["The Forest", 15.49, "blue"],
+        ["Fallout 4", 19.99, "red"],
+        ["Tomb Raider", 14.99, "yellow"],
+        ["BioShock Infinite", 19.99, "burgundy"],
+        ["Dying Light", 24.99, "brown"],
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Price of the top 10 RatedR games",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "85%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+
+
+
+
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["name", "positive_ratings", { role: "style" } ],
+        ["Grand Theft Auto V", 329061, "#b87333"],
+        ["PAYDAY 2", 308657, "silver"],
+        ["Rust", 220370, "gold"],
+        ["Borderlands 2", 144595, "color: #e5e4e2"],
+        ["DayZ", 118435, "green"],
+        ["The Forest", 110460, "blue"],
+        ["Fallout 4", 110376, "red"],
+        ["Tomb Raider", 93509, "yellow"],
+        ["BioShock Infinite", 79442, "burgundy"],
+        ["Dying Light", 78192, "brown"],
+
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "No of positive ratings of the top 10 RatedR games",
+        width: 600,
+        height: 400,
+        bar: {groupWidth: "85%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("barchart_values2"));
+      chart.draw(view, options);
+  }
+  </script>
+
+
+</body>
+</html>
